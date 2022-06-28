@@ -2,7 +2,7 @@
 
 Source code for the lesson slides. Visit the slides here:
 
-<!-- Needs to be published -->
+https://holochain-immersive.github.io/move-semantics/
 
 ## Setup Instructions
 
