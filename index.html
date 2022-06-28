@@ -1,641 +1,1658 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <meta name="Description" content="Put your description here." />
-    <base href="/" />
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        background-color: #ededed;
-        --r-main-font-size: 24px;
-        --r-heading-margin: 20px 0 12px 0;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here." />
+  <base href="/" />
 
-      .slides {
-        width: 75% !important;
-      }
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #ededed;
+      --r-main-font-size: 24px;
+      --r-heading-margin: 20px 0 12px 0;
+    }
 
-      .container {
-        top: 0 !important;
-        display: flex !important;
-        flex-direction: row !important;
-      }
-      .column {
-        flex: 1;
-      }
+    .slides {
+      width: 75% !important;
+    }
 
-      section {
-        text-align: left;
-      }
+    .container {
+      top: 0 !important;
+      display: flex !important;
+      flex-direction: row !important;
+    }
 
-      .popover {
-        position: absolute;
-        background-color: #4d4d4d;
-        padding: 1rem 2rem;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        border-radius: 10px;
-        width: auto;
-        transform: translate(35px, -15px);
-      }
-      .popover:after {
-        content: "";
-        position: absolute;
-        top: 6px;
-        left: -10px;
-        border-style: solid;
-        border-width: 25px 25px 0;
-        border-color: #4d4d4d transparent;
-        display: block;
-        width: 0;
-        z-index: 1;
-        transform: translate(-50%, 50%) rotate(90deg);
-      }
-      .reveal pre code {
-        max-height: 800px !important;
-      }
-    </style>
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
-    <link
-      rel="stylesheet"
-      href="/node_modules/reveal.js/dist/theme/black.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/reveal.js/plugin/highlight/monokai.css"
-    />
-    <title>Lesson 1</title>
-  </head>
+    .column {
+      flex: 1;
+    }
 
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h1>Rust Language Fundamentals</h1>
-        </section>
+    .column2 {
+      flex: 2;
+    }
 
-        <section>
-          <h2>Why Rust?</h2>
-          <div class="container">
-            <div class="column">
-              <h3>A low level language</h3>
+    .column3 {
+      flex: 3;
+    }
 
-              <li class="fragment fade-in-then-semi-out">
-                Compiled, not interpreted
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                Enforces very strict rules
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                Goal: all errors at compile time
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                No segmentation faults
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                Semi-optimal garbage collection
-              </li>
+    section {
+      text-align: left;
+    }
+
+    .popover {
+      position: absolute;
+      background-color: #4d4d4d;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      border-radius: 10px;
+      width: auto;
+      transform: translate(35px, -15px);
+    }
+
+    .popover:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: -10px;
+      border-style: solid;
+      border-width: 25px 25px 0;
+      border-color: #4d4d4d transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+      transform: translate(-50%, 50%) rotate(90deg);
+    }
+
+    .reveal pre code {
+      max-height: 800px !important;
+    }
+
+    /* new, remember to alphabetize */
+
+    .arrow-block {
+      position: absolute;
+      left: -20px;
+      top: 0px;
+    }
+
+    .arrow-right-arrow-point-down-left {
+      position: absolute;
+      top: 200px;
+      left: 275px;
+      transform: rotate(160deg) scale(10, 2.5);
+    }
+
+    .arrow-left-arrow-point-down-right {
+      position: absolute;
+      top: 200px;
+      left: 270px;
+      transform: rotate(20deg) scale(10, 2.5);
+    }
+
+    .arrow-right-arrow-point-down {
+      position: absolute;
+      top: 200px;
+      left: 350px;
+      transform: rotate(-90deg) scale(3, 2.5);
+    }
+
+    .arrow-left-arrow-point-down {
+      position: absolute;
+      top: 200px;
+      left: 170px;
+      transform: rotate(-90deg) scale(3, 2.5);
+    }
+
+    .arrow-blue {
+      color: blue;
+    }
+
+    .arrow-green {
+      color: green;
+    }
+
+    .arrow-red {
+      color: red;
+    }
+
+    .arrow-stretch {
+      transform: scale(2, 1);
+      min-height: 100%;
+    }
+
+    .arrow-stretch-more {
+      transform: scale(3, 1.5);
+      min-height: 100%;
+    }
+
+    .arrow-stretch-lengthen {
+      transform: scale(1, 1.5);
+      min-height: 100%;
+    }
+
+    .arrow-wide {
+      transform: scale(4, 1.5);
+    }
+
+    /* .position-relative {
+      position: relative;
+      left: -50%;
+    } */
+
+    /* .position-absolute {
+      position: absolute;
+    } */
+
+    /* .position-relative>img {
+      position: inherit;
+      top: 0;
+    } */
+
+    .diagram-box {
+      min-height: 3em;
+      color: black;
+    }
+
+    .diagram-box-magenta {
+      background-color: #ead1dc;
+    }
+
+    .diagram-box-yellow {
+      background-color: #fff2cc;
+    }
+
+    .diagram-box-solid {
+      border: 4px solid grey
+    }
+
+    .diagram-box-dotted {
+      border: 4px dotted grey
+    }
+
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr 2fr;
+      grid-gap: 1em;
+      row-gap: 3em;
+      align-items: center;
+    }
+
+    .font-medium {
+      font-size: 1.25em;
+    }
+
+    .font-smaller {
+      font-size: .9em;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 5px;
+    }
+
+    .legend-line {
+      display: inline-block;
+      width: 60%;
+      height: 0;
+      margin-left: 15%;
+      margin-top: 10%;
+      border-width: 5px;
+    }
+
+    .legend-line-dashed {
+      border-top-style: dashed;
+    }
+
+    .legend-line-dotted {
+      border-top-style: dotted;
+    }
+
+    .legend-line-solid {
+      border-top-style: solid;
+    }
+
+    .legend-line-blue {
+      border-color: blue;
+    }
+
+    .legend-line-gray {
+      border-color: gray;
+    }
+
+    .legend-line-green {
+      border-color: green;
+    }
+
+    .legend-line-purple {
+      border-color: #8e7cc3;
+    }
+
+    .legend-line-red {
+      border-color: red;
+    }
+
+    .legend-caption {
+      text-align: left;
+      margin-bottom: 1em;
+    }
+
+    .legend-caption-tight {
+      margin-bottom: 0.2em;
+    }
+
+    .margin-left-small {
+      margin-left: 30px;
+    }
+
+    .margin-top-small {
+      margin-top: 1.25em;
+    }
+
+    .text-center {
+      text-align: center;
+      align-items: center;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-vertical {
+      transform: rotate(-90deg);
+    }
+
+    .img-center {
+      margin: 0 auto;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    .border-right {
+      border-right: 5px solid red;
+    }
+
+    .grid-container-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-1-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-1-3 {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-1-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-3-1 {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-3-1-3 {
+      display: grid;
+      grid-template-columns: 3fr 1fr 3fr;
+      grid-gap: 5px;
+    }
+
+    .grid-container-1-4-4 {
+      display: grid;
+      grid-template-columns: 1fr 4fr 4fr;
+      grid-gap: 5px;
+    }
+
+    .grid-no-gap {
+      grid-gap: 0px;
+    }
+
+    .quadrant {
+      padding: 1em;
+    }
+
+    .quadrant-top-left {
+      border-bottom: 3px solid white;
+      border-right: 3px solid white;
+    }
+
+    .quadrant-top-right {
+      border-bottom: 3px solid white;
+      border-left: 3px solid white;
+    }
+
+    .quadrant-bottom-left {
+      border-top: 3px solid white;
+      border-right: 3px solid white;
+    }
+
+    .quadrant-bottom-right {
+      border-top: 3px solid white;
+      border-left: 3px solid white;
+    }
+
+
+    .bg-grey {
+      background-color: grey;
+    }
+
+    .bg-light-grey {
+      background-color: lightgrey;
+    }
+
+    .bg-red {
+      background-color: #ead1dc;
+    }
+
+    .bg-yellow {
+      background-color: #fff2cc;
+    }
+
+    .border-solid {
+      border-width: 3px;
+      border-style: solid;
+    }
+
+    .border-dotted {
+      border-width: 3px;
+      border-style: dotted;
+    }
+
+    .border-grey {
+      border-color: grey;
+    }
+
+    .text-black {
+      color: black;
+    }
+
+    .text-white {
+      color: white;
+    }
+
+    .pad-20 {
+      padding: 20px;
+    }
+
+    .pad-light {
+      padding: 0.3em;
+    }
+
+    .margin-left-4em {
+      margin-left: 4em;
+    }
+
+    .max-height-1 {
+      max-height: 1em !important;
+    }
+
+    .max-height-2 {
+      max-height: 2em !important;
+    }
+
+    .max-height-3 {
+      max-height: 3em !important;
+    }
+
+    .min-width-5 {
+      min-width: 5em;
+    }
+
+    img {
+      margin: 0 !important;
+    }
+
+    .padding-top-heavy {
+      padding-top: 100%;
+    }
+
+    /* necessary? */
+    .valign-top {
+      align-items: initial;
+    }
+
+    /* new, remember to alphabetize */
+  </style>
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
+  <link rel="stylesheet" href="/node_modules/reveal.js/plugin/highlight/monokai.css" />
+  <title>Lesson 1</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- title slide -->
+      <section>
+        <h1>Move Semantics</h1>
+      </section>
+      <!-- Uncopyable References & Sample code -->
+      <section>
+        <div class="grid-container-1-2 valign-top">
+          <div>
+            <div class="grid-container-1-3 text-center">
+              <div></div>
+              <div>
+                <p class="underline"><strong>Uncopyable References</strong></p>
+              </div>
+              <div>
+                <p class=" pad-20">Source:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div class="text-white">
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div>
+                    <img class="max-height-2 arrow-stretch-lengthen" src="./img/blue-dotted-down.png" alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="max-height-2 arrow-stretch-more" src="./img/red-dotted-down-right.png" alt="">
+                    <img class="max-height-2 arrow-stretch-more" src="./img/blue-dotted-down-left.png" alt="">
+                  </div>
+                  <div>
+                    <img class="max-height-2 arrow-stretch-lengthen" src="./img/green-solid-down.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-red border-solid border-grey pad-light min-width-5">
+                    Immutable<br />ref
+                  </div>
+                  <div class="text-white">
+                    <p>or</p>
+                  </div>
+                  <div class="bg-red border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />ref
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="column">
-              <h3 class="fragment fade-in">Modern & high level features</h3>
-
-              <li class="fragment fade-in-then-semi-out">
-                Great compiler & error messages
-              </li>
-              <li class="fragment fade-in-then-semi-out">Iterators</li>
-              <li class="fragment fade-in-then-semi-out">
-                Functional programming features
-                <ul>
-                  <li class="fragment fade-in-then-semi-out">
-                    Function pointers & closures
-                  </li>
-                  <li class="fragment fade-in-then-semi-out">
-                    Higher order functions
-                  </li>
-                </ul>
-              </li>
-              <li class="fragment fade-in-then-semi-out">Package manager</li>
-              <li class="fragment fade-in-then-semi-out">Testing framework</li>
+            <div class="grid-container-1-3 font-smaller">
+              <div>
+                <!-- empty -->
+              </div>
+              <div class="underline text-center margin-top-small">
+                <strong>
+                  Legend
+                </strong>
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption-tight">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption-tight">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
             </div>
           </div>
-        </section>
-
-        <section>
-          <h3>Variable Consumption</h3>
-
-          <li class="fragment fade-in-then-semi-out">
-            One of Rust's most distinctive features
-          </li>
-          <li class="fragment fade-in-then-semi-out">
-            Allows the compiler to prevent many kinds of error
-          </li>
-          <li class="fragment fade-in-then-semi-out">
-            A constraint on how you write code
-          </li>
-          <li class="fragment fade-in-then-semi-out">
-            When you reference certain variables, they become "consumed"
-          </li>
-          <li class="fragment fade-in-then-semi-out">
-            A consumed variable cannot be referenced again later
-          </li>
-        </section>
-
-        <section>
-          <h3>Categories of Typed Variables</h3>
-
-          <h4 class="fragment fade-in-then-semi-out">Scalars (unconsumable)</h4>
-          <li class="fragment fade-in-then-semi-out">Boolean</li>
-
-          <li id="integer" class="fragment fade-in-then-semi-out">
-            Integer
-            <ul data-fragment-skip class="popover fragment fade-in-then-out">
-              <li class="fragment fade-in-then-semi-out">
-                Unsigned
-                <ul>
-                  <li class="fragment fade-in-then-semi-out">u8 through u64</li>
-                  <li class="fragment fade-in-then-semi-out">
-                    usize (based on machine architecture)
-                  </li>
-                </ul>
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                Signed
-                <ul>
-                  <li class="fragment fade-in-then-semi-out">i8 through i64</li>
-                  <li class="fragment fade-in-then-semi-out">
-                    isize (based on machine architecture)
-                  </li>
-                </ul>
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                Extra credit
-                <ul>
-                  <li class="fragment fade-in-then-semi-out">
-                    Other base systems (binary, hex, octal)
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-
-          <li class="fragment fade-in-then-semi-out">
-            Float
-
-            <ul data-fragment-skip class="popover fragment fade-in-then-out">
-              <li class="fragment fade-in-then-semi-out">
-                Signed
-                <ul>
-                  <li class="fragment fade-in-then-semi-out">f32 and f64</li>
-                  <li class="fragment fade-in-then-semi-out">Default is f64</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="fragment fade-in-then-semi-out">
-            Char
-
-            <ul data-fragment-skip class="popover fragment fade-in-then-out">
-              <li class="fragment">
-                A char literal is surrounded by single quotes
-              </li>
-            </ul>
-          </li>
-          <li class="fragment fade-in-then-semi-out">Unit type</li>
-          <li class="fragment fade-in-then-semi-out">
-            Str literal*
-
-            <ul data-fragment-skip class="popover fragment fade-in-then-out">
-              <li class="fragment">Fundamentally immutable</li>
-            </ul>
-          </li>
-
-          <h4 class="fragment fade-in-then-semi-out">Unconsumable Compounds</h4>
-          <ul>
-            <li class="fragment fade-in-then-semi-out">
-              Tuple of unconsumables
-            </li>
-            <li class="fragment fade-in-then-semi-out">
-              Array of unconsumables
-            </li>
-          </ul>
-
-          <h4 class="fragment fade-in-then-semi-out">Consumable Compounds</h4>
-          <ul>
-            <li class="fragment fade-in-then-semi-out">Tuple of consumables</li>
-            <li class="fragment fade-in-then-semi-out">Array of consumables</li>
-            <li class="fragment fade-in-then-semi-out">
-              Structs
-              <ul>
-                <li class="fragment fade-in-then-semi-out">Vectors</li>
-                <li class="fragment fade-in-then-semi-out">String struct</li>
-              </ul>
-            </li>
-            <li class="fragment fade-in-then-semi-out">Enums</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Declaration of Variables</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// Declare with "let", in snake case
-let user_age: f32 = 1.0;
-</span>
-
-<span class="fragment fade-in-then-semi-out">// Redeclaration
-let user_age: f32 = 2.0;</span>
-
-<span class="fragment fade-in-then-semi-out">
-// (type is inferred if omitted)
-let user_age = 3.0; // Default type: f64</span>
-  
-<span class="fragment fade-in-then-semi-out">// Immutable by default
-<span class="fragment strike">user_age = 4.0;</span> // Err</span>
-
-<span class="fragment fade-in-then-semi-out">// Set as mutable
-let mut mutable_age = 5;
-mutable_age = 6; // Works</span>
-
-<span class="fragment fade-in-then-semi-out">// Strict Typing
-<span class="fragment strike">mutable_age = “seven”;</span> // Err</span>
-            </code></pre>
-        </section>
-
-        <section>
-          <h3>Conditional Blocks</h3>
-
-          <pre><code class="rust" data-noescape>let n = 1;
-
-<span class="fragment fade-in-then-semi-out">// No parenthesis
-// Boolean expression
-if n == 1 {
-  // Conditional block
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Logical operators
-if n > 0 || !(n <= 2 && n != 3) {
-  // Conditional block 
-}</span>
-  
-<span class="fragment fade-in-then-semi-out">
-if n > 0 {
-  // If
-} else if n < 2 {
-  // Else if, can be repeated
-} else {
-  // Else
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Can have a result value
-let if_result: u32 = if n < 2 {
-  // Last block line is an expression
-  2
-} else {
-  let y = 3;
-  // Last block line is an expression 
-  y
-}; // Notice the semi-colon</span>            
-            </code></pre>
-        </section>
-
-        <section>
-          <h3>Iteration Blocks</h3>
-
-          <pre><code class="rust" data-noescape>let mut i = 0;
-
-<span class="fragment fade-in-then-semi-out">// "while" with boolean expression
-while i < 3 {
-  i += 1;
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Can't have a result value
-<span class="fragment strike">let result = while i < 3 {
-  4
-};</span></span>
-  
-<span class="fragment fade-in-then-semi-out">// "break" stops the loop
-while i < 3 {
-  if i == 2 {
-    break;
-  }
-}
-// i will be 2</span>
-
-<span class="fragment fade-in-then-semi-out">// "for" loop with excluding range
-for i in 0..3 {
-  // i will be 0, 1, 2
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// "for" loop with including range
-for i in 0..=3 {
-  // i will be 0, 1, 2, 3
-}</span>
-</code></pre>
-        </section>
-
-        <section>
-          <h3>Functions</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// All parameter types declared
-fn add(a: u32, b: u32) -> u32 {
-  return a + b;
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Return is implied if last line is an expression
-fn add_expr(a: u32, b: u32) -> u32 {
-  a + b
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Unit type is implied if there is no return
-fn no_return() -> () {
-  ()
-}
-fn equivalent_to_no_return() {
-
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Functions can be stored in functions pointers
-fn higher_order() {
-  let add_fn: fn(u32, u32) -> u32 = add;
-}</span>
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>Closures</h3>
-          <li class="fragment fade-in-then-semi-out">
-            Functions that capture their environment
-          </li>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">
-fn sample() {
-  <span class="fragment fade-in-then-semi-out">// Parmeters inside | |
-  let equal_to_4 = |z: u32| {
-    z == x  // x is captured
-  };</span>
-
-  <span class="fragment fade-in-then-semi-out">// Closures are invoked like functions
-  let is_four_a = equal_to_4(4); // true
-  let is_four_b = equal_to_4(5); // false</span>
-
-  <span class="fragment fade-in-then-semi-out">let x: u32 = 4;
-  // They capture their environment
-  let equal_to_x = |z: u32| {
-    z == x  // x is captured
-  };
-
-  let is_four_a = equal_to_x(4); // true
-  let is_four_b = equal_to_x(5); // false</span>
-
-  <span class="fragment fade-in-then-semi-out">// Parameter types can be inferred
-  let equal_to_x_infer = |z| { // z is of type u32 
-    z == x
-  };</span>
-
-  <span class="fragment fade-in-then-semi-out">// Body can be just an returning expression
-  let equal_to_x_simple = |z| z == x;</span>
-
-  <span class="fragment fade-in-then-semi-out">// Can't be sent to another context
-  <span class="fragment strike">return equal_to_4;</span>// Err</span>
-}</span>
-          </code></pre>
-        </section>
-
-        <section>
-          <h3>String Literal</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// &str
-let s: &str = "hello world!";</span>
-
-<span class="fragment fade-in-then-semi-out">// str is not valid
-<span class="fragment strike">let s: str = "hello world!";</span> // Err</span>
-
-<span class="fragment fade-in-then-semi-out">// Fundamentally immutable
-<span class="fragment strike">let mut s: &str = "hello world!";</span> // Err</span>
-
-<span class="fragment fade-in-then-semi-out">// Copyable
-let s: &str = "hello world!";
-let x = s;
-let y = s; // Ok</span>
-
-<span class="fragment fade-in-then-semi-out">// Sliceable
-let s: &str = "hello world!";
-let slice: &str = &s[0..2]; // "slice" will contain "he" 
-                            // Notice the &</span>
-
-<span class="fragment fade-in-then-semi-out">// Does not support indexing
-let s: &str = "hello world!";
-<span class="fragment strike">let first_char = s[0];</span> // Err</span>  
-</code></pre>
-        </section>
-
-        <section>
-          <h3>Tuples: basics</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// Bundle of elements of different type
-let tuple_a: (i32, f64, u8) = (0, 1.0, 2);</span>
-
-<span class="fragment fade-in-then-semi-out">// Destructuring a tuple
-let (a0, a1, a2) = tuple_a; // "a0" is 0, "a1" is 1.0, "a2" is 2</span>
-
-<span class="fragment fade-in-then-semi-out">// Element types can be inferred
-let tuple_a = (0, 1.0, 2);</span>
-
-<span class="fragment fade-in-then-semi-out">// Accessing an element by index
-let a0 = tuple_a.0; // "b0" is 0
-let a1 = tuple_a.1; // "b1" is 1.0
-let a2 = tuple_a.2; // "b2" is 2</span>
-</code></pre>
-        </section>
-
-        <section>
-          <h3>Tuples: ownership and mutability</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// Tuple is copyable if all elements are
-let tuple_a = (0, 1.0, 2);
-let tuple_b = tuple_a;
-let tuple_c = tuple_a; // Ok</span>
-
-<span class="fragment fade-in-then-semi-out">// Tuple is not copyable if some element isn't
-let tuple_a = (0, String::from("hello"), 2);
-let tuple_b = tuple_a;
-<span class="fragment strike">let tuple_b = tuple_a;</span> // Err</span>
-
-<span class="fragment fade-in-then-semi-out">let tuple_a = (String::from("hello"), String::from("world"));
-let a0 = tuple_a.0; // "tuple_a" gets partially consumed
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a0 = tuple_a.0;</span> // Err, first element has already been consumed</span>
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let tuple_b = tuple_a;</span> // Err, first element has already been consumed</span></span>
-<span class="fragment fade-in-then-semi-out">let a1 = tuple_a.1; // Ok, second element has not been consumed</span>
-
-<span class="fragment fade-in-then-semi-out">let tuple_a = (String::from("hello"), String::from("world"));
-let mut a0 = tuple_a.0; // Ok, we are taking ownership of "tuple_a.0"</span>
-
-<span class="fragment fade-in-then-semi-out">fn access_elements(tuple_a: &(i32, String)) {
-  <span class="fragment fade-in-then-semi-out">let (a0, a1, a2) = tuple_a; // "a0": &i32, "a1": &String </span>
-  <span class="fragment fade-in-then-semi-out">let a0 = tuple_a.0; // "a0" is of type i32, i32 is copied</span>
-  <span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a1 = tuple_a.1;</span> // Err, cannot consume the String since we only have a ref</span>
-  <span class="fragment fade-in-then-semi-out">let a1 = &tuple_a.1; // Ok, "a1" is of type &String</span>
-
-  <span class="fragment fade-in-then-semi-out">let mut a0 = tuple_a.0; // Ok, i32 is copied so we own "a0"</span>
-  <span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a1 = tuple_a.1;</span> // Err, cannot consume the String since we only have a ref</span>
-  <span class="fragment fade-in-then-semi-out">let mut a1 = &tuple_a.1; // Ok, "a0" is still of type &String, can be reassigned </span>
-  <span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a1 = &mut tuple_a.1;</span> // Err, cannot create a mutable reference to an element of a tuple reference</span>
-}</span>
-
-<span class="fragment fade-in-then-semi-out">fn access_elements_mut(tuple_a: &mut (i32, String)) {
-  <span class="fragment fade-in">let a1 = &mut tuple_a.1; // Ok</span>
-  <span class="fragment fade-in"><span class="fragment strike">let b1 = &mut tuple_a.1; // Ok
-  *a1 = String::from(""); // Err, can't have multiple mutable references</span></span>
-}</span>
-
-</code></pre>
-        </section>
-
-        <section>
-          <h3>Arrays</h3>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">// Sequence of fixed length
-// Elements must have the same type
-let array_a: [usize; 4] = [0, 1, 2, 3];</span>
-
-<span class="fragment fade-in-then-semi-out">// Accessing by index
-let a0 = array_a[0]; // "a0" contains 1</span>
-
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a0 = array_a[4];</span> // Out of bounds err</span>
-
-<span class="fragment fade-in-then-semi-out">// Destructuring
-
-// "a0" contains 0, "rest_of_array" contains [1, 2, 3]
-let [a0, rest_of_array @ ..] = array_a;
-<span class="fragment fade-in-then-semi-out">// "a0" contains 0, "a1" contains 1, "rest_of_array" contains [2, 3]
-let [a0, a1, rest_of_array @ ..] = array_a;</span></span>
-
-<span class="fragment fade-in-then-semi-out">let array_a = [String::from("hello"), String::from("world")];
-let a0 = array_a[0]; // "array" gets partially consumed
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a0 = array_a[0]; </span> // Err, first element has already been consumed</span>
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let array_b = array_a;</span> // Err, first element has already been consumed</span></span>
-<span class="fragment fade-in-then-semi-out">let a1 = array_a[1]; // Ok, second element has not been consumed</span>
-
-<span class="fragment fade-in-then-semi-out">fn access_elements_integer_array(array_a: &[i32]) { // Array references don't need a known size
-  <span class="fragment fade-in">let a0 = array_a[0]; // "a0" is of type i32, i32 is copied</span>
-  <span class="fragment fade-in-then-semi-out">let a0 = array_a[0]; // Ok</span>
-}</span>
-
-<span class="fragment fade-in-then-semi-out">fn access_elements_string_array(array_a: &[String]) {
-  <span class="fragment fade-in-then-semi-out"><span class="fragment strike">let a0 = array_a[0];</span> // Err, cannot consume the String since we only have a ref</span>
-  <span class="fragment fade-in-then-semi-out">let a0 = &array_a[0]; // Ok, "a0" is of type &String</span>
-  <span class="fragment fade-in-then-semi-out">let a0 = &array_a[0]; // Ok, "a0" is of type &String</span>
-}</span>
-
-<span class="fragment fade-in-then-semi-out">// Sliceable
-let array_a = [0, 1, 2, 3];
-<span class="fragment fade-in-then-semi-out"><span class="fragment strike">let array_slice = array_a[0..2];</span> // Err, cannot have a slice without a reference</span>
-<span class="fragment fade-in-then-semi-out">let array_slice = &array_a[0..2]; // Ok, array_slice will be a reference to [0, 1]</span></span>
-</code></pre> <!-- TODO: replicate same structure as in tuples with regards to ownership and mutability? -->
-        </section>
-
-        <section>
-          <h3>For In and Iterators</h3>
-
-          <li class="fragment fade-in-then-semi-out">
-            For in can iterate over any iterator
-          </li>
-          <!-- TODO: Introducing iterators here feels really weird-->
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">let array_a = [0, 1, 2, 3];
-for i in array {
-  // i will be 0, 1, 2, 3
-}</span>
-
-<span class="fragment fade-in-then-semi-out">let array_a = [0, 1, 2, 3];
-for i in array.iter() { // .iter() produces an iterator
-  // i will be 0, 1, 2, 3
-}</span>
-
-<span class="fragment fade-in-then-semi-out">let array_a = [0, 1, 2, 3];
-let array_a1: Vec&lt;usize&gt; = array_a.iter() <!-- TODO: What to do? We can't talk about vectors yet -->
-  <span class="fragment fade-in">.map(|integer| integer + 1) // Executes the closure and maps the result</span>
-  <span class="fragment fade-in">.collect();  // Collect converts an iterator into a vector, "array_a1" will contain vec![1, 2, 3, 4]</span>
-<span class="fragment fade-in">let array_a2 = array_a1; // Ok, .iter() doesn't consume "array_a"</span></span>
-
-<span class="fragment fade-in-then-semi-out">let array_a = [0, 1, 2, 3];
-let array_a1 = array_a.into_iter() // .into_iter() also produces an iterator
-  .map(|integer| integer + 1) // Executes the closure and maps the result
-  .collect(); // Collect converts an iterator into a vector, "array_a1" will contain vec![1, 2, 3, 4]
-<span class="fragment fade-in">let array_a2 = array_a1; // Ok, "array_a" is copiable</span></span>
-  
-<span class="fragment fade-in-then-semi-out">let array_b = [String::from("hello"), String::from("world")];
-let array_b1: Vec&lt;&String&gt; = array_a.iter()
-  .filter(|s: &&String| s.starts_with('h')) // Only return the elements for which the closure returns true
-  .collect(); // Collect converts an iterator into a vector, "array_b1" will contain vec![&String::from("hello")]
-<span class="fragment fade-in">let array_b1 = array_b; // Ok, .iter() doesn't consume "array_a"</span></span>
-
-<span class="fragment fade-in-then-semi-out">let array_b = [String::from("hello"), String::from("world")];
-let array_b1: Vec&lt;String&gt; = array_a.into_iter()
-  .filter(|s: &String| s.starts_with('h')) // Only return the elements for which the closure returns true
-  .collect(); // Collect converts an iterator into a vector, "array_b1" will contain vec![String::from("hello")]
-<span class="fragment fade-in"><span class="fragment strike">let array_b1 = array_b;</span> // Err, .into_iter() consumed "array_a"</span></span>
-</code></pre>
-        </section>
-
-        <section>
-          <h3>println!()</h3>
-
-          <li class="fragment fade-in-then-semi-out">
-            Declarative macro<br />
-            <ul>
-              <li class="fragment fade-in-then-semi-out">
-                Similar to functions, but invoked with '!'
-              </li>
-              <li class="fragment fade-in-then-semi-out">
-                We won't cover them for a long time
-              </li>
-            </ul>
-          </li>
-
-          <pre><code class="rust" data-noescape><span class="fragment fade-in-then-semi-out">fn main() {
-  // Output to stdout
-  println!("Hello world!");
-
-  <span class="fragment fade-in-then-semi-out">let x = 0;
-  let y = 1;
-  println!("x is equal to {}, y is equal to {}", x, y); // will print "x is equal to 0, y is equal to 1"</span>
-
-  <span class="fragment fade-in-then-semi-out">let array = [String::from("hello"), String::from("world")];
-  <span class="fragment fade-in-then-semi-out"><span class="fragment strike">println!("array is equal to {}", array);</span> // Err, compound types cannot be printed with {}</span>
-  <span class="fragment fade-in">println!("array is equal to {:?}", array); // Ok, will print "array is equal to ["hello", "world"]"</span>
-  <span class="fragment fade-in">println!("array is equal to {:?}", array); // Ok, println! doesn't consume</span></span>
-}</span>
-  </code></pre>
-        </section>
-      </div>
+          <div class="text-center margin-left-small">
+            <p class="underline">
+              <strong>
+                Sample code
+              </strong>
+            </p>
+            <pre>
+              <code class="rust font-medium" data-line-numbers data-trim data-noescape>
+                // A function that takes an immutable ref
+                fn take_imm_ref(immutable_input: &String) {}
+
+                let immutable_source = String::from("hi");
+                take_imm_ref(&immutable_source);
+                let consumer = immutable_source; // err
+                take_imm_ref(&immutable_source); // cause of err
+
+                let mut mutable_source = String::from("hi");
+                take_imm_ref(&mutable_source);
+                let consumer = immutable_source; // err
+                take_imm_ref(&mutable_source); // cause of err
+
+                // A function that takes a mutable ref
+                fn take_mut_ref(mutable_input: &mut String) {}
+
+                let mut mutable_source = String::from("hi");
+                take_mut_ref(&mut mutable_source); // shares mutation
+                take_mut_ref(&mut mutable_source); // shares mutation
+
+                let immutable_source = String::from("hi");
+                take_mut_ref(&mut immutable_source); // err
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+      <!-- Copyable Variables & Sample code -->
+      <section>
+        <div class="grid-container-1-2 valign-top">
+          <div>
+            <div class="grid-container-1-3 text-center">
+              <div></div>
+              <div>
+                <p class="underline""><strong>Copyable Variables</strong></p>
+              </div>
+              <div>
+                  <p class=" pad-20">Source:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div>
+                  <img class="max-height-1 arrow-wide" src="./img/light-grey-solid-down.png">
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-container-1-3 font-smaller">
+              <div>
+                <!-- empty -->
+              </div>
+              <div class="underline text-center margin-top-small">
+                <strong>
+                  Legend
+                </strong>
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption-tight">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption-tight">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
+            </div>
+          </div>
+          <div class="text-center margin-left-small">
+            <p class="underline">
+              <strong>
+                Sample code
+              </strong>
+            </p>
+            <pre>
+              <code class="rust font-medium" data-line-numbers data-trim data-noescape>
+                // A function that takes an immutable var
+                fn take_imm_var(immutable_input: i32) {}
+                
+                let immutable_source = 5;
+                take_imm_var(immutable_source);
+                take_imm_var(immutable_source); // works fine
+                
+                let mut mutable_source = 5;
+                take_imm_var(mutable_source);
+                take_imm_var(mutable_source); // works fine
+                
+                
+                // A function that takes a mutable var
+                fn take_mut_var(mut mutable_input: i32) {}
+                
+                let mut mutable_source = 5;
+                take_mut_var(mutable_source);
+                take_mut_var(mutable_source); // works fine
+                
+                let immutable_source = 5;
+                take_mut_var(immutable_source);
+                take_mut_var(immutable_source); // works fine                
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+      <!-- Uncopyable Variables & Sample code -->
+      <section>
+        <div class="grid-container-1-2 valign-top">
+          <div>
+            <div class="grid-container-1-3 text-center">
+              <div></div>
+              <div>
+                <p class="underline"><strong>Uncopyable Variables</strong></p>
+              </div>
+              <div>
+                <p class=" pad-20">Source:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div>
+                  <img class="max-height-1 arrow-wide" src="./img/blue-solid-down.png">
+
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-container-1-3 font-smaller">
+              <div>
+                <!-- empty -->
+              </div>
+              <div class="underline text-center margin-top-small">
+                <strong>
+                  Legend
+                </strong>
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption-tight">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption-tight">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
+            </div>
+          </div>
+          <div class="text-center margin-left-small">
+            <p class="underline">
+              <strong>
+                Sample code
+              </strong>
+            </p>
+            <pre>
+              <code class="rust font-medium" data-line-numbers data-trim data-noescape>
+                // A function that takes an immutable var
+                fn take_imm_var(immutable_input: String) {}
+
+                let immutable_source = String::from("hi");
+                take_imm_var(immutable_source);
+                take_imm_var(immutable_source); // err
+
+                let mut mutable_source = String::from("hi");
+                take_imm_var(mutable_source);
+                take_imm_var(mutable_source); // err
+
+
+                // A function that takes a mutable var
+                fn take_mut_var(mut mutable_input: String) {}
+
+                let mut mutable_source = String::from("hi");
+                take_mut_var(mutable_source);
+                take_mut_var(mutable_source); // err
+
+                let immutable_source = String::from("hi");
+                take_mut_var(immutable_source);
+                take_mut_var(immutable_source); // err           
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+      <!-- Copyable References & Sample code -->
+      <section>
+        <div class="grid-container-1-2 valign-top">
+          <div>
+            <div class="grid-container-1-3 text-center">
+              <div></div>
+              <div>
+                <p class="underline"><strong>Copyable References</strong></p>
+              </div>
+              <div>
+                <p class=" pad-20">Source:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey pad-light min-width-5">
+                    Immutable<br />var
+                  </div>
+                  <div class="text-white">
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div>
+                    <img class="max-height-2 arrow-stretch-lengthen" src="./img/light-grey-solid-down.png" alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="max-height-2 arrow-stretch-more" src="./img/red-dotted-down-right.png" alt="">
+                    <img class="max-height-2 arrow-stretch-more" src="./img/light-grey-solid-down-left.png" alt="">
+                  </div>
+                  <div>
+                    <img class="max-height-2 arrow-stretch-lengthen" src="./img/green-solid-down.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-red border-solid border-grey pad-light min-width-5">
+                    Immutable<br />ref
+                  </div>
+                  <div class="text-white">
+                    <p>or</p>
+                  </div>
+                  <div class="bg-red border-dotted border-grey pad-light min-width-5">
+                    Mutable<br />ref
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-container-1-3 font-smaller">
+              <div>
+                <!-- empty -->
+              </div>
+              <div class="underline text-center margin-top-small">
+                <strong>
+                  Legend
+                </strong>
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption-tight">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption-tight">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption-tight">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-blue"></div>
+              <div class="legend-caption-tight">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
+            </div>
+          </div>
+          <div class="text-center margin-left-small">
+            <p class="underline">
+              <strong>
+                Sample code
+              </strong>
+            </p>
+            <pre>
+              <code class="rust font-medium" data-line-numbers data-trim data-noescape>
+                // A function that takes an immutable ref
+                fn take_imm_ref(immutable_input: &i32) {}
+
+                let immutable_source = 5;
+                take_imm_ref(&immutable_source);
+                take_imm_ref(&immutable_source); // works fine
+
+                let mut mutable_source = 5;
+                take_imm_ref(&mutable_source);
+                take_imm_ref(&mutable_source); // works fine
+
+
+                // A function that takes a mutable ref
+                fn take_mut_ref(mutable_input: &mut i32) {}
+
+                let mut mutable_source = 5;
+                take_mut_ref(&mut mutable_source); // shares mutation
+                take_mut_ref(&mut mutable_source); // shares mutation
+
+                let immutable_source = 5;
+                take_mut_ref(&mut immutable_source); // err
+
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+      <!-- Creating Copyable Variables 1 -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Copyable</strong><br /><strong>Variables</strong></p>
+              </div>
+              <div>
+                <p class="pad-20 fragment" data-fragment-index="1">Source:</p>
+              </div>
+              <div class="text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey fragment" data-fragment-index="2">Immutable<br />var
+                  </div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey fragment" data-fragment-index="3">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div class="r-stack img-center">
+                    <!-- light-grey-dotted-down -->
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <!-- empty p tag to trick reveal into a fadeout of the arrows-->
+                    <p class="fragment" data-fragment-index="8"></p>
+                  </div>
+                  <div class="r-stack img-center">
+                    <!-- light-grey-dotted-down-right -->
+                    <!-- light-grey-dotted-down-left -->
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down-right.png" alt="">
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down-left.png" alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <!-- light-grey-dotted-down -->
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <p class="popover fragment fade-in-then-out text-left" data-fragment-index="7">
+                      All of these assignments are possible. How will each behave?
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="pad-20 fragment" data-fragment-index="4">New:</p>
+              </div>
+              <div class="text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey fragment" data-fragment-index="5">Immutable<br />var
+                  </div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey fragment" data-fragment-index="6">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <!-- empty -->
+          </div>
+        </div>
+      </section>
+      <!-- Creating Copyable Variables 2 -->
+      <!-- Split this section into two in order to fade in a parent element after its child -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Copyable</strong><br /><strong>Variables</strong></p>
+              </div>
+              <div>
+                <p class="pad-20">Source:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div class="r-stack img-center">
+                    <!-- empty -->
+                  </div>
+                  <div class="r-stack img-center">
+                    <!-- light-grey-dotted-down-right -->
+                    <!-- light-grey-dotted-down-left -->
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="1"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="2" src="./img/light-grey-solid-down.png"
+                      alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <!-- empty -->
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <p class="underline fragment" data-fragment-index="1"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray fragment" data-fragment-index="1"></div>
+              <div class="legend-caption fragment" data-fragment-index="1">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray fragment" data-fragment-index="3"></div>
+              <div class="legend-caption fragment" data-fragment-index="3">
+                Independent copy created
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Creating Uncopyable Variables 1 -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Uncopyable</strong><br /><strong>Variables</strong></p>
+              </div>
+              <div>
+                <p class="pad-20">Source:</p>
+              </div>
+              <div class="text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var</div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var</div>
+                </div>
+              </div>
+              <div></div>
+              <div class="max-height-3 opacity-0">
+                <img src="./img/blue-solid-down.png" alt="">
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var</div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <p class="underline"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption">
+                Independent copy created
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Creating Uncopyable Variables 2 -->
+      <!-- Split this section into two in order to fade in a parent element after its child -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Uncopyable</strong><br /><strong>Variables</strong></p>
+              </div>
+              <div>
+                <p class="pad-20">Source:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div class="r-stack img-center">
+                    <!-- empty -->
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="1"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="2" src="./img/blue-solid-down.png" alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <!-- empty -->
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="pad-20">New:</p>
+              </div>
+              <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                  </div>
+                  <div>
+                    <p>or</p>
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <p class="underline"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue fragment" data-fragment-index="3"></div>
+              <div class="legend-caption fragment" data-fragment-index="3">
+                Source var consumed
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Creating Copyable References -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Copyable</strong><br /><strong>References</strong></p>
+              </div>
+              <div>
+                <p>Source:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey fragment" data-fragment-index="1">Immutable<br />var
+                  </div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey fragment" data-fragment-index="1">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div></div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div class="r-stack img-center">
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="3"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="4" src="./img/light-grey-solid-down.png"
+                      alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="5"
+                      src="./img/light-grey-dotted-down-left.png" alt="">
+                    <img class="arrow-stretch fragment" data-fragment-index="6"
+                      src="./img/light-grey-solid-down-left.png" alt="">
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="10"
+                      src="./img/light-grey-dotted-down-right.png" alt="">
+                    <img class="arrow-stretch fragment" data-fragment-index="11" src="./img/red-dotted-down-right.png"
+                      alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="8" src="./img/green-solid-down.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p>New:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-red border-solid border-grey fragment" data-fragment-index="2">Immutable<br />ref</div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-red border-dotted border-grey fragment" data-fragment-index="2">Mutable<br />ref</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <p class="underline"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green fragment" data-fragment-index="9"></div>
+              <div class="legend-caption fragment" data-fragment-index="9">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red fragment" data-fragment-index="12"></div>
+              <div class="legend-caption fragment" data-fragment-index="12">
+                Disallowed
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Creating Uncopyable References -->
+      <section>
+        <div class="grid-container-1-1 text-center valign-top">
+          <div>
+            <div class="grid-container-1-3">
+              <div></div>
+              <div>
+                <p>Creating<br /><strong>Uncopyable</strong><br /><strong>References</strong></p>
+              </div>
+              <div>
+                <p>Source:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-yellow border-solid border-grey fragment" data-fragment-index="1">Immutable<br />var
+                  </div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-yellow border-dotted border-grey fragment" data-fragment-index="1">Mutable<br />var
+                  </div>
+                </div>
+              </div>
+              <div></div>
+              <div>
+                <div class="grid-container-3-1-3">
+                  <div class="r-stack img-center">
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="2"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="3" src="./img/purple-solid-down.png" alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="5"
+                      src="./img/light-grey-dotted-down-left.png" alt="">
+                    <img class="arrow-stretch fragment" data-fragment-index="6" src="./img/purple-solid-down-left.png"
+                      alt="">
+                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="9"
+                      src="./img/light-grey-dotted-down-right.png" alt="">
+                    <img class="arrow-stretch fragment" data-fragment-index="10" src="./img/red-dotted-down-right.png"
+                      alt="">
+                  </div>
+                  <div class="r-stack img-center">
+                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="7"
+                      src="./img/light-grey-dotted-down.png" alt="">
+                    <img class="max-height-3 fragment" data-fragment-index="8" src="./img/green-solid-down.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p>New:</p>
+              </div>
+              <div class="text-black">
+                <div class="grid-container-3-1-3">
+                  <div class="bg-red border-solid border-grey fragment" data-fragment-index="1">Immutable<br />ref</div>
+                  <div>
+                    <!-- empty -->
+                  </div>
+                  <div class="bg-red border-dotted border-grey fragment" data-fragment-index="1">Mutable<br />ref</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin-left-4em">
+            <p class="underline"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-purple fragment" data-fragment-index="4"></div>
+              <div class="legend-caption fragment" data-fragment-index="4">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Summary -->
+      <section>
+        <div class="grid-container-3-1 text-center">
+          <div>
+            <!-- main 2x2 table -->
+            <div class="grid-container-1-4-4 grid-no-gap">
+              <div>
+                <!-- empty -->
+              </div>
+              <div>
+                <p class="underline">
+                  <strong>Copyable</strong>
+                </p>
+              </div>
+              <div>
+                <p class="underline">
+                  <strong>Uncopyable</strong>
+                </p>
+              </div>
+              <div class="padding-top-heavy">
+                <p class="underline text-vertical">
+                  <strong>Variables</strong>
+                </p>
+              </div>
+              <div>
+                <div class="grid-container-1 quadrant quadrant-top-left">
+                  <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                      </div>
+                      <div>
+                        <p>or</p>
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="grid-container-3-1-3">
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="img-center">
+                        <img class="max-height-1 arrow-wide" src="./img/light-grey-solid-down.png" alt="">
+                      </div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                      </div>
+                      <div>
+                        <p>or</p>
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="grid-container-1 quadrant quadrant-top-right">
+                  <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                      </div>
+                      <div>
+                        <p>or</p>
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="grid-container-3-1-3">
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="img-center">
+                        <img class="max-height-1 arrow-wide" src="./img/blue-solid-down.png" alt="">
+                      </div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-light-grey border-solid border-grey text-black pad-20">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">Immutable<br />var
+                      </div>
+                      <div>
+                        <p>or</p>
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="padding-top-heavy">
+                <p class="underline text-vertical">
+                  <strong>References</strong>
+                </p>
+              </div>
+              <div>
+                <div class="grid-container-1 quadrant quadrant-bottom-left">
+                  <div class="text-black">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">
+                        Immutable<br />var
+                      </div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="grid-container-3-1-3">
+                      <div class="img-center">
+                        <img class="max-height-2" src="./img/light-grey-solid-down.png" alt="">
+                      </div>
+                      <div class="r-stack img-center">
+                        <img class="arrow-stretch" src="./img/light-grey-solid-down-left.png" alt="">
+                        <img class="arrow-stretch" src="./img/red-dotted-down-right.png" alt="">
+                      </div>
+                      <div class="img-center">
+                        <img class="max-height-2" src="./img/green-solid-down.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-black">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-red border-solid border-grey">Immutable<br />ref</div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="bg-red border-dotted border-grey">Mutable<br />ref</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="grid-container-1 quadrant quadrant-bottom-right">
+                  <div class="text-black">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-yellow border-solid border-grey">
+                        Immutable<br />var
+                      </div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="bg-yellow border-dotted border-grey">Mutable<br />var
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="grid-container-3-1-3">
+                      <div class="img-center">
+                        <img class="max-height-2" src="./img/purple-solid-down.png" alt="">
+                      </div>
+                      <div class="r-stack img-center">
+                        <img class="arrow-stretch" src="./img/purple-solid-down-left.png" alt="">
+                        <img class="arrow-stretch" src="./img/red-dotted-down-right.png" alt="">
+                      </div>
+                      <div class="img-center">
+                        <img class="max-height-2" src="./img/green-solid-down.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-black">
+                    <div class="grid-container-3-1-3">
+                      <div class="bg-red border-solid border-grey">Immutable<br />ref</div>
+                      <div>
+                        <!-- empty -->
+                      </div>
+                      <div class="bg-red border-dotted border-grey">Mutable<br />ref</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- chart -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="underline"><strong>Legend</strong></p>
+            <div class="grid-container-1-3">
+              <div class="legend-line legend-line-dotted legend-line-gray"></div>
+              <div class="legend-caption">
+                Question: how will this relationship behave?
+              </div>
+              <div class="legend-line legend-line-solid legend-line-gray"></div>
+              <div class="legend-caption">
+                Independent copy created
+              </div>
+              <div class="legend-line legend-line-solid legend-line-blue"></div>
+              <div class="legend-caption">
+                Source var consumed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-green"></div>
+              <div class="legend-caption">
+                Shared mutations
+              </div>
+              <div class="legend-line legend-line-dotted legend-line-red"></div>
+              <div class="legend-caption">
+                Disallowed
+              </div>
+              <div class="legend-line legend-line-solid legend-line-purple"></div>
+              <div class="legend-caption">
+                Consumption of source var blocked by any later uses of new ref
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+  </div>
 
-    <script type="module">
-      import Reveal from "reveal.js";
-      import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
-      import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm.js";
-      import RevealNotes from "reveal.js/plugin/notes/notes.esm.js";
-      import RevealNestedFragments from "reveal.js-nested-fragments";
+  <script type="module">
+    import Reveal from "reveal.js";
+    import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+    import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm.js";
+    import RevealNotes from "reveal.js/plugin/notes/notes.esm.js";
+    import RevealNestedFragments from "reveal.js-nested-fragments";
 
-      let deck = new Reveal({
-        transition: "none",
-        plugins: [
-          Markdown,
-          RevealHighlight,
-          RevealNotes,
-          RevealNestedFragments,
-        ],
-      });
-      deck.initialize();
-    </script>
-  </body>
+    let deck = new Reveal({
+      transition: "none",
+      plugins: [
+        Markdown,
+        RevealHighlight,
+        RevealNotes,
+        RevealNestedFragments,
+      ],
+    });
+    deck.initialize();
+  </script>
+</body>
+
 </html>
