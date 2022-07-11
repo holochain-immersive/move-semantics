@@ -105,7 +105,7 @@
 
                 <span class="fragment" data-fragment-index="41">let mut mutable_source = String::from("hi");</span>
                 <span class="fragment" data-fragment-index="42">take_imm_ref(&amp;mutable_source);</span>
-                <span class="fragment" data-fragment-index="43">let consumer = immutable_source;</span><span class="fragment" data-fragment-index="46"> // err</span>
+                <span class="fragment" data-fragment-index="43">let consumer = mutable_source;</span><span class="fragment" data-fragment-index="46"> // err</span>
                 <span class="fragment" data-fragment-index="46">take_imm_ref(&amp;mutable_source);</span><span class="fragment" data-fragment-index="47"> // cause of err</span>
 
                 <span class="fragment" data-fragment-index="61">// A function that takes a mutable ref</span>
