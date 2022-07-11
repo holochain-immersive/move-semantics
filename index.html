@@ -89,6 +89,10 @@
       transform: scale(1.5, 1.2);
     }
 
+    .arrow-hotfix {
+      transform: scale(2);
+    }
+
     .arrow-right-arrow-point-down-left {
       position: absolute;
       top: 200px;
@@ -609,7 +613,7 @@
                   <div class="r-stack img-center">
                     <!-- light-grey-dotted-down-right -->
                     <!-- light-grey-dotted-down-left -->
-                    <img class="max-height-1 arrow-wide fragment fade-in-then-out" data-fragment-index="0"
+                    <img class="max-height-1 arrow-wide fragment" data-fragment-index="0"
                       src="./img/light-grey-dotted-down.png" alt="">
                     <img class="max-height-1 arrow-wide fragment" data-fragment-index="7"
                       src="./img/light-grey-solid-down.png" alt="">
@@ -690,22 +694,14 @@
         </div>
       </section>
       <!-- Uncopyable Variables 1/2 -->
-      <!-- start is good, except no code and remove "uncopyable variables" -->
-      <!-- "uncopyable variables comes in" -->
-      <!-- good until dotted arrow -->
-      <!-- before blue arrow, line by line code up to 6 without the comment -->
-      <!-- blue -->
-      <!-- legend line blue -->
-      <!-- line 6's comment -->
-      <!-- line by line, with inline comments coming in separately -->
-      <!--  -->
       <section>
         <div class="grid-container-2-3 valign-top">
           <div>
             <div class="grid-container-1-3 text-center">
               <div></div>
               <div class="text-center">
-                <p>Creating<br /><strong><u>Uncopyable Variables</u></strong></p>
+                <p>Creating<br /><strong class="fragment" data-fragment-index="0"><u>Uncopyable Variables</u></strong>
+                </p>
               </div>
               <div>
                 <p class="pad-20 margin-decrease">Source:</p>
@@ -783,28 +779,28 @@
             </p>
             <pre>
               <code class="rust font-medium" data-line-numbers data-trim data-noescape>
-                // A function that takes an uncopyable immutable var
-                fn take_imm_var(immutable_input: String) {}
-
-                let immutable_source = String::from("hi");
-                take_imm_var(immutable_source);
-                take_imm_var(immutable_source); // err
-
-                let mut mutable_source = String::from("hi");
-                take_imm_var(mutable_source);
-                take_imm_var(mutable_source); // err
-
-
-                // A function that takes an uncopyable mutable var
-                fn take_mut_var(mut mutable_input: String) {}
-
-                let mut mutable_source = String::from("hi");
-                take_mut_var(mutable_source);
-                take_mut_var(mutable_source); // err
-
-                let immutable_source = String::from("hi");
-                take_mut_var(immutable_source);
-                take_mut_var(immutable_source); // err
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
               </code>
             </pre>
           </div>
@@ -845,8 +841,10 @@
                   <div class="r-stack img-center">
                     <!-- light-grey-dotted-down-right -->
                     <!-- light-grey-dotted-down-left -->
-                    <img class="max-height-1 arrow-wide fragment fade-in-then-out" data-fragment-index="0"
-                      src="./img/light-grey-dotted-down.png" alt="">
+                    <span class="fragment" data-fragment-index="0">
+                      <img class="max-height-1 arrow-wide fragment fade-out" data-fragment-index="10"
+                        src="./img/light-grey-dotted-down.png" alt="">
+                    </span>
                     <img class="max-height-1 arrow-wide fragment" data-fragment-index="10"
                       src="./img/blue-solid-down.png" alt="">
                   </div>
@@ -888,8 +886,8 @@
               <div class="legend-caption-tight">
                 Independent copy created
               </div>
-              <div class="legend-line legend-line-solid legend-line-blue fragment" data-fragment-index="20"></div>
-              <div class="legend-caption-tight fragment" data-fragment-index="20">
+              <div class="legend-line legend-line-solid legend-line-blue fragment" data-fragment-index="11"></div>
+              <div class="legend-caption-tight fragment" data-fragment-index="11">
                 Source var consumed
               </div>
             </div>
@@ -901,43 +899,35 @@
               </strong>
             </p>
             <pre>
-                    <code class="rust font-medium" data-line-numbers data-trim data-noescape>
-                      // A function that takes an uncopyable immutable var
-                      fn take_imm_var(immutable_input: String) {}
+                    <code class="rust font-medium" data-line-numbers data-noescape data-trim>
+                      <span class="fragment" data-fragment-index="1">// A function that takes an uncopyable immutable var</span>
+                      <span class="fragment" data-fragment-index="2">fn take_imm_var(immutable_input: String) {}</span>
 
-                      let immutable_source = String::from("hi");
-                      take_imm_var(immutable_source);
-                      take_imm_var(immutable_source); // err
+                      <span class="fragment" data-fragment-index="3">let immutable_source = String::from("hi");</span>
+                      <span class="fragment" data-fragment-index="4">take_imm_var(immutable_source);</span>
+                      <span class="fragment" data-fragment-index="5">take_imm_var(immutable_source);</span><span class="fragment" data-fragment-index="20"> // err</span>
 
-                      let mut mutable_source = String::from("hi");
-                      take_imm_var(mutable_source);
-                      take_imm_var(mutable_source); // err
+                      <span class="fragment" data-fragment-index="30">let mut mutable_source = String::from("hi");</span>
+                      <span class="fragment" data-fragment-index="40">take_imm_var(mutable_source);</span>
+                      <span class="fragment" data-fragment-index="50">take_imm_var(mutable_source);</span><span class="fragment" data-fragment-index="60"> // err</span>
 
 
-                      // A function that takes an uncopyable mutable var
-                      fn take_mut_var(mut mutable_input: String) {}
+                      <span class="fragment" data-fragment-index="70">// A function that takes an uncopyable mutable var</span>
+                      <span class="fragment" data-fragment-index="80">fn take_mut_var(mut mutable_input: String) {}</span>
 
-                      let mut mutable_source = String::from("hi");
-                      take_mut_var(mutable_source);
-                      take_mut_var(mutable_source); // err
+                      <span class="fragment" data-fragment-index="90">let mut mutable_source = String::from("hi");</span>
+                      <span class="fragment" data-fragment-index="100">take_mut_var(mutable_source);</span>
+                      <span class="fragment" data-fragment-index="110">take_mut_var(mutable_source);</span><span class="fragment" data-fragment-index="120"> // err</span>
 
-                      let immutable_source = String::from("hi");
-                      take_mut_var(immutable_source);
-                      take_mut_var(immutable_source); // err
+                      <span class="fragment" data-fragment-index="130">let immutable_source = String::from("hi");</span>
+                      <span class="fragment" data-fragment-index="140">take_mut_var(immutable_source);</span>
+                      <span class="fragment" data-fragment-index="150">take_mut_var(immutable_source);</span><span class="fragment" data-fragment-index="160"> // err</span>
                     </code>
                   </pre>
           </div>
         </div>
       </section>
       <!-- Copyable References -->
-      <!-- start with no "copyable references" and no code -->
-      <!-- fade in "copyable ref" -->
-      <!-- good until dotted gray down -->
-      <!-- fade in code line by line up to 6 (without comment) -->
-      <!-- fade in solid gray down -->
-      <!-- fade in line 6 comment -->
-      <!-- dotted down left -->
-
       <section>
         <div class="grid-container-2-3 valign-top">
           <div>
@@ -945,7 +935,8 @@
               <div></div>
               <div>
                 <!-- todo: mixed use of underline css and u tag -->
-                <p>Creating<br /><strong><u>Copyable References</u></strong></p>
+                <p>Creating<br /><strong class="fragment" data-fragment-index="0"><u>Copyable References</u></strong>
+                </p>
               </div>
               <div>
                 <p>Source:</p>
@@ -965,25 +956,32 @@
               <div>
                 <div class="grid-container-3-1-3">
                   <div class="r-stack img-center">
-                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="30"
-                      src="./img/light-grey-dotted-down.png" alt="">
-                    <img class="max-height-3 fragment" data-fragment-index="40" src="./img/light-grey-solid-down.png"
+                    <span class="fragment" data-fragment-index="30">
+                      <img class="max-height-3 fragment fade-out" data-fragment-index="36"
+                        src="./img/light-grey-dotted-down.png" alt="">
+                    </span>
+                    <img class="max-height-3 fragment" data-fragment-index="36" src="./img/light-grey-solid-down.png"
                       alt="">
                   </div>
                   <div class="r-stack img-center">
-                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="50"
+                    <img class="arrow-stretch fragment" data-fragment-index="40"
                       src="./img/light-grey-dotted-down-left.png" alt="">
-                    <img class="arrow-stretch fragment" data-fragment-index="60"
+                    <img class="arrow-stretch fragment" data-fragment-index="44"
                       src="./img/light-grey-solid-down-left.png" alt="">
-                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="100"
-                      src="./img/light-grey-dotted-down-right.png" alt="">
-                    <img class="arrow-stretch fragment" data-fragment-index="110" src="./img/red-dotted-down-right.png"
+                    <span class="fragment" data-fragment-index="80">
+                      <!-- todo: arrow-hotfix is a workaround -->
+                      <img class="arrow-hotfix fragment fade-out" data-fragment-index="90"
+                        src="./img/light-grey-dotted-down-right.png">
+                    </span>
+                    <img class="arrow-stretch fragment" data-fragment-index="90" src="./img/red-dotted-down-right.png"
                       alt="">
                   </div>
                   <div class="r-stack img-center">
-                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="70"
-                      src="./img/light-grey-dotted-down.png" alt="">
-                    <img class="max-height-3 fragment" data-fragment-index="80" src="./img/green-solid-down.png" alt="">
+                    <span class="fragment" data-fragment-index="50">
+                      <img class="max-height-3 fragment fade-out" data-fragment-index="60"
+                        src="./img/light-grey-dotted-down.png" alt="">
+                    </span>
+                    <img class="max-height-3 fragment" data-fragment-index="60" src="./img/green-solid-down.png" alt="">
                   </div>
                 </div>
               </div>
@@ -1022,12 +1020,12 @@
               <div class="legend-caption-tight">
                 Source var consumed
               </div>
-              <div class="legend-line legend-line-solid legend-line-green fragment" data-fragment-index="90"></div>
-              <div class="legend-caption-tight fragment" data-fragment-index="90">
+              <div class="legend-line legend-line-solid legend-line-green fragment" data-fragment-index="70"></div>
+              <div class="legend-caption-tight fragment" data-fragment-index="70">
                 Shared mutations
               </div>
-              <div class="legend-line legend-line-dotted legend-line-red fragment" data-fragment-index="120"></div>
-              <div class="legend-caption-tight fragment" data-fragment-index="120">
+              <div class="legend-line legend-line-dotted legend-line-red fragment" data-fragment-index="91"></div>
+              <div class="legend-caption-tight fragment" data-fragment-index="91">
                 Disallowed
               </div>
             </div>
@@ -1040,27 +1038,27 @@
             </p>
             <pre>
                     <code class="rust font-medium" data-line-numbers data-trim data-noescape>
-                      // A function that takes an immutable ref
-                      fn take_imm_ref(immutable_input: &i32) {}
-      
-                      let immutable_source = 5;
-                      take_imm_ref(&immutable_source);
-                      take_imm_ref(&immutable_source); // works fine
-      
-                      let mut mutable_source = 5;
-                      take_imm_ref(&mutable_source);
-                      take_imm_ref(&mutable_source); // works fine
-      
-      
-                      // A function that takes a mutable ref
-                      fn take_mut_ref(mutable_input: &mut i32) {}
-      
-                      let mut mutable_source = 5;
-                      take_mut_ref(&mut mutable_source); // shares mutation
-                      take_mut_ref(&mut mutable_source); // shares mutation
-      
-                      let immutable_source = 5;
-                      take_mut_ref(&mut immutable_source); // err
+                      <span class="fragment" data-fragment-index="31">// A function that takes an immutable ref</span>
+                      <span class="fragment" data-fragment-index="32">fn take_imm_ref(immutable_input: &i32) {}</span>
+
+                      <span class="fragment" data-fragment-index="33">let immutable_source = 5;</span>
+                      <span class="fragment" data-fragment-index="34">take_imm_ref(&immutable_source);</span>
+                      <span class="fragment" data-fragment-index="35">take_imm_ref(&immutable_source);</span><span class="fragment" data-fragment-index="37"> // works fine</span>
+
+                      <span class="fragment" data-fragment-index="41">let mut mutable_source = 5;</span>
+                      <span class="fragment" data-fragment-index="42">take_imm_ref(&mutable_source);</span>
+                      <span class="fragment" data-fragment-index="43">take_imm_ref(&mutable_source);</span><span class="fragment" data-fragment-index="45"> // works fine</span>
+
+
+                      <span class="fragment" data-fragment-index="51">// A function that takes a mutable ref</span>
+                      <span class="fragment" data-fragment-index="52">fn take_mut_ref(mutable_input: &mut i32) {}</span>
+
+                      <span class="fragment" data-fragment-index="53">let mut mutable_source = 5;</span>
+                      <span class="fragment" data-fragment-index="54">take_mut_ref(&mut mutable_source);</span><span class="fragment" data-fragment-index="71"> // shares mutation</span>
+                      <span class="fragment" data-fragment-index="72">take_mut_ref(&mut mutable_source);</span><span class="fragment" data-fragment-index="73"> // shares mutation</span>
+
+                      <span class="fragment" data-fragment-index="81">let immutable_source = 5;</span>
+                      <span class="fragment" data-fragment-index="82">take_mut_ref(&mut immutable_source);</span><span class="fragment" data-fragment-index="100"> // err</span>
       
                     </code>
                   </pre>
@@ -1068,14 +1066,6 @@
         </div>
       </section>
       <!-- Uncopyable References -->
-      <!-- Start with no "uncop ref" and no code -->
-      <!-- fade in "uncop ref" -->
-      <!-- fade in dotted gray down -->
-      <!-- fade in code line by line until line 6's comment -->
-      <!-- purple arrow -->
-      <!-- purple legend line -->
-      <!-- line 6's comment and line 7 w/o comment -->
-      <!-- line 7's comment -->
       <section>
         <div class="grid-container-2-3 valign-top">
           <div>
@@ -1083,19 +1073,20 @@
               <div></div>
               <div>
                 <!-- todo: mixed use of underline css and u tag -->
-                <p>Creating<br /><strong><u>Uncopyable References</u></strong></p>
+                <p>Creating<br /><strong class="fragment" data-fragment-index="0"><u>Uncopyable References</u></strong>
+                </p>
               </div>
               <div>
                 <p>Source:</p>
               </div>
               <div class="text-black">
                 <div class="grid-container-3-1-3">
-                  <div class="bg-yellow border-solid border-grey fragment" data-fragment-index="0">Immutable<br />var
+                  <div class="bg-yellow border-solid border-grey">Immutable<br />var
                   </div>
                   <div>
                     <!-- empty -->
                   </div>
-                  <div class="bg-yellow border-dotted border-grey fragment" data-fragment-index="0">Mutable<br />var
+                  <div class="bg-yellow border-dotted border-grey">Mutable<br />var
                   </div>
                 </div>
               </div>
@@ -1103,24 +1094,34 @@
               <div>
                 <div class="grid-container-3-1-3">
                   <div class="r-stack img-center">
-                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="10"
-                      src="./img/light-grey-dotted-down.png" alt="">
+                    <span class="fragment" data-fragment-index="10">
+                      <img class="max-height-3 fragment fade-out" data-fragment-index="20"
+                        src="./img/light-grey-dotted-down.png" alt="">
+                    </span>
                     <img class="max-height-3 fragment" data-fragment-index="20" src="./img/purple-solid-down.png"
                       alt="">
                   </div>
                   <div class="r-stack img-center">
-                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="40"
-                      src="./img/light-grey-dotted-down-left.png" alt="">
-                    <img class="arrow-stretch fragment" data-fragment-index="50" src="./img/purple-solid-down-left.png"
+                    <span class="fragment" data-fragment-index="40">
+                      <!-- todo: arrow-hotfix is temp -->
+                      <img class="arrow-hotfix fragment fade-out" data-fragment-index="45"
+                        src="./img/light-grey-dotted-down-left.png" alt="">
+                    </span>
+                    <img class="arrow-stretch fragment" data-fragment-index="45" src="./img/purple-solid-down-left.png"
                       alt="">
-                    <img class="arrow-stretch fragment fade-in-then-out" data-fragment-index="80"
-                      src="./img/light-grey-dotted-down-right.png" alt="">
+                    <span class="fragment" data-fragment-index="80">
+                      <!-- todo: arrow-hotfix is temp -->
+                      <img class="arrow-hotfix fragment fade-out" data-fragment-index="90"
+                        src="./img/light-grey-dotted-down-right.png" alt="">
+                    </span>
                     <img class="arrow-stretch fragment" data-fragment-index="90" src="./img/red-dotted-down-right.png"
                       alt="">
                   </div>
                   <div class="r-stack img-center">
-                    <img class="max-height-3 fragment fade-in-then-out" data-fragment-index="60"
-                      src="./img/light-grey-dotted-down.png" alt="">
+                    <span class="fragment" data-fragment-index="60">
+                      <img class="max-height-3 fragment fade-out" data-fragment-index="70"
+                        src="./img/light-grey-dotted-down.png" alt="">
+                    </span>
                     <img class="max-height-3 fragment" data-fragment-index="70" src="./img/green-solid-down.png" alt="">
                   </div>
                 </div>
@@ -1130,11 +1131,11 @@
               </div>
               <div class="text-black">
                 <div class="grid-container-3-1-3">
-                  <div class="bg-red border-solid border-grey fragment" data-fragment-index="0">Immutable<br />ref</div>
+                  <div class="bg-red border-solid border-grey">Immutable<br />ref</div>
                   <div>
                     <!-- empty -->
                   </div>
-                  <div class="bg-red border-dotted border-grey fragment" data-fragment-index="0">Mutable<br />ref</div>
+                  <div class="bg-red border-dotted border-grey">Mutable<br />ref</div>
                 </div>
               </div>
             </div>
@@ -1181,28 +1182,28 @@
             </p>
             <pre>
               <code class="rust font-medium" data-line-numbers data-trim data-noescape>
-                // A function that takes an immutable ref
-                fn take_imm_ref(immutable_input: &String) {}
+                <span class="fragment" data-fragment-index="11">// A function that takes an immutable ref</span>
+                <span class="fragment" data-fragment-index="12">fn take_imm_ref(immutable_input: &String) {}</span>
 
-                let immutable_source = String::from("hi");
-                take_imm_ref(&immutable_source);
-                let consumer = immutable_source; // err
-                take_imm_ref(&immutable_source); // cause of err
+                <span class="fragment" data-fragment-index="13">let immutable_source = String::from("hi");</span>
+                <span class="fragment" data-fragment-index="14">take_imm_ref(&immutable_source);</span>
+                <span class="fragment" data-fragment-index="15">let consumer = immutable_source;</span><span class="fragment" data-fragment-index="35"> // err</span>
+                <span class="fragment" data-fragment-index="35">take_imm_ref(&immutable_source);</span><span class="fragment" data-fragment-index="36"> // cause of err</span>
 
-                let mut mutable_source = String::from("hi");
-                take_imm_ref(&mutable_source);
-                let consumer = immutable_source; // err
-                take_imm_ref(&mutable_source); // cause of err
+                <span class="fragment" data-fragment-index="41">let mut mutable_source = String::from("hi");</span>
+                <span class="fragment" data-fragment-index="42">take_imm_ref(&mutable_source);</span>
+                <span class="fragment" data-fragment-index="43">let consumer = immutable_source;</span><span class="fragment" data-fragment-index="46"> // err</span>
+                <span class="fragment" data-fragment-index="46">take_imm_ref(&mutable_source);</span><span class="fragment" data-fragment-index="47"> // cause of err</span>
 
-                // A function that takes a mutable ref
-                fn take_mut_ref(mutable_input: &mut String) {}
+                <span class="fragment" data-fragment-index="61">// A function that takes a mutable ref</span>
+                <span class="fragment" data-fragment-index="62">fn take_mut_ref(mutable_input: &mut String) {}</span>
 
-                let mut mutable_source = String::from("hi");
-                take_mut_ref(&mut mutable_source); // shares mutation
-                take_mut_ref(&mut mutable_source); // shares mutation
+                <span class="fragment" data-fragment-index="63">let mut mutable_source = String::from("hi");</span>
+                <span class="fragment" data-fragment-index="64">take_mut_ref(&mut mutable_source);</span><span class="fragment" data-fragment-index="71"> // shares mutation</span>
+                <span class="fragment" data-fragment-index="72">take_mut_ref(&mut mutable_source);</span><span class="fragment" data-fragment-index="73"> // shares mutation</span>
 
-                let immutable_source = String::from("hi");
-                take_mut_ref(&mut immutable_source); // err
+                <span class="fragment" data-fragment-index="81">let immutable_source = String::from("hi");</span>
+                <span class="fragment" data-fragment-index="82">take_mut_ref(&mut immutable_source);</span><span class="fragment" data-fragment-index="91"> // err</span>
               </code>
             </pre>
           </div>
@@ -1232,7 +1233,7 @@
                   <strong>Variables</strong>
                 </p>
               </div>
-              <div>
+              <div class="fragment" data-fragment-index="0">
                 <div class="grid-container-1 quadrant quadrant-top-left">
                   <div class="bg-light-grey border-solid border-grey text-black pad-20">
                     <div class="grid-container-3-1-3">
@@ -1271,7 +1272,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="fragment" data-fragment-index="10">
                 <div class="grid-container-1 quadrant quadrant-top-right">
                   <div class="bg-light-grey border-solid border-grey text-black pad-20">
                     <div class="grid-container-3-1-3">
@@ -1315,7 +1316,7 @@
                   <strong>References</strong>
                 </p>
               </div>
-              <div>
+              <div class="fragment" data-fragment-index="20">
                 <div class="grid-container-1 quadrant quadrant-bottom-left">
                   <div class="text-black">
                     <div class="grid-container-3-1-3">
@@ -1354,7 +1355,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="fragment" data-fragment-index="30">
                 <div class="grid-container-1 quadrant quadrant-bottom-right">
                   <div class="text-black">
                     <div class="grid-container-3-1-3">
@@ -1428,6 +1429,9 @@
             </div>
           </div>
         </div>
+      </section>
+      <section class="title-slide">
+        <h1>That's it!</h1>
       </section>
     </div>
   </div>
