@@ -17,7 +17,7 @@ export default {
   plugins: [
     /** Enable using HTML as rollup entrypoint */
     html({
-      publicPath: "rust-move-semantics",
+      publicPath: "move-semantics",
     }),
     /** Resolve bare module imports */
     nodeResolve(),
